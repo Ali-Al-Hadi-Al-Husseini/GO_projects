@@ -12,5 +12,16 @@ func main() {
 		fmt.Println(err)
 	}
 	defer listen.Close()
+	for {
+		conn, err := listen.Accept()
+		if err != nil {
+			fmt.Println(err)
+		}
 
+		go handleConnection(conn)
+	}
+}
+
+func handleConnection(conn net.Conn) {
+	return
 }
