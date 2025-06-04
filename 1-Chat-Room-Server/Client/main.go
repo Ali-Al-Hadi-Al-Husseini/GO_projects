@@ -20,6 +20,13 @@ func main() {
 
 func ListenForMsg(conn net.Conn) {
 	reader := bufio.NewReader(conn)
+	for {
+		content, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println("errror")
+		}
+		fmt.Println("msg: ", content)
+	}
 
 }
 
