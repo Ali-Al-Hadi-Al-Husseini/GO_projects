@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net"
+	"os"
 )
 
 func main() {
@@ -21,5 +23,12 @@ func ListenForMsg() {
 }
 
 func sendMsg() {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
 
+		//scaning for txt to send
+		fmt.Printf("=> ")
+		scanner.Scan()
+
+	}
 }
