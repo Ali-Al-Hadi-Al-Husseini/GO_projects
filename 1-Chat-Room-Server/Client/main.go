@@ -15,7 +15,7 @@ func main() {
 	defer conn.Close()
 
 	go ListenForMsg()
-	sendMsg()
+	sendMsg(conn)
 }
 
 func ListenForMsg() {
