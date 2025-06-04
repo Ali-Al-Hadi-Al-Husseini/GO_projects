@@ -22,13 +22,20 @@ func ListenForMsg() {
 
 }
 
-func sendMsg() {
+func sendMsg(conn net.Conn) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 
-		//scaning for txt to send
+		//scaning for msg to send
 		fmt.Printf("=> ")
 		scanner.Scan()
+		content := scanner.Text() + "\n"
+
+		//writing the txt to the response
+		writer := bufio.NewWriter(conn)
+		fmt.Println("got this msg")
+		writer.WriteString(content)
+		writer.Flush()
 
 	}
 }
