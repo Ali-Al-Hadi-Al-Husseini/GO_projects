@@ -18,7 +18,8 @@ func main() {
 	sendMsg(conn)
 }
 
-func ListenForMsg() {
+func ListenForMsg(conn net.Conn) {
+	reader := bufio.NewReader(conn)
 
 }
 
