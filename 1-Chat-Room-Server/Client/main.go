@@ -41,7 +41,6 @@ func sendMsg(conn net.Conn) {
 
 		//writing the txt to the response
 		writer := bufio.NewWriter(conn)
-		fmt.Println("got this msg")
 		writer.WriteString(content)
 		writer.Flush()
 
