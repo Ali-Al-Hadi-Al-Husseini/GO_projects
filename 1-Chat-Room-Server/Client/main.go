@@ -11,4 +11,15 @@ func main() {
 		fmt.Println("Error")
 	}
 	defer conn.Close()
+
+	go ListenForMsg()
+	sendMsg()
+}
+
+func ListenForMsg() {
+
+}
+
+func sendMsg() {
+
 }
