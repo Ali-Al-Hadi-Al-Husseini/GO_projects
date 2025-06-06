@@ -25,6 +25,10 @@ func main() {
 			fmt.Println(err)
 		}
 
+		connMutex.Lock()
+		connections[conn] = true
+		connMutex.Unlock()
+
 		go handleConnection(conn)
 	}
 }
