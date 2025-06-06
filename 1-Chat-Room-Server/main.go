@@ -51,4 +51,14 @@ func handleConnection(conn net.Conn) {
 
 }
 
-func broadCast(sender net.Conn, msg string) {}
+func broadCast(sender net.Conn, msg string) {
+	connMutex.Lock()
+	defer connMutex.Unlock()
+
+	for conn := range connections {
+		if conn != sender {
+			conn.Write([]byte(msg))
+		}
+	}
+
+}
