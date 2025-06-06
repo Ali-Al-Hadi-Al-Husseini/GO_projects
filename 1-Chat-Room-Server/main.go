@@ -9,7 +9,7 @@ import (
 
 var (
 	connections = make(map[net.Conn]bool)
-	mutex       = &sync.Mutex{}
+	connMutex   = &sync.Mutex{}
 )
 
 func main() {
