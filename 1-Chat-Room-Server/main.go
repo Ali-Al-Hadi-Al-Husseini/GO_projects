@@ -34,15 +34,19 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-	defer conn.Close()
+	defer func() {
+		connMutex.Lock()
+		delete(connections, conn)
+		connMutex.Unlock()
+		conn.Close()
+	}()
 	reader := bufio.NewReader(conn)
 	for {
-		contnt, err := reader.ReadString('\n')
+		msg, err := reader.ReadString('\n')
 		if err != nil {
 			return
 		}
 
-		fmt.Println("Got: ", contnt)
 	}
 
 }
