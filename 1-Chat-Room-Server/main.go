@@ -4,6 +4,12 @@ import (
 	"bufio"
 	"fmt"
 	"net"
+	"sync"
+)
+
+var (
+	connections = make(map[net.Conn]bool)
+	mutex       = &sync.Mutex{}
 )
 
 func main() {
