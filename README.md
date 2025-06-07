@@ -11,13 +11,10 @@ This repository contains a collection of small Go projects designed to help me l
 ### Key Concepts:
 - Concurrency with Goroutines
 - Message broadcasting with Channels
-- WebSocket handling (`gorilla/websocket`)
-- Graceful shutdowns using `context`
-- Basic HTML/JS frontend to connect to server
+- WebSocket handling ('net')
 
 ### Bonus Features:
 - User nicknames
-- Private messaging
 - Chat history log
 
 ---
