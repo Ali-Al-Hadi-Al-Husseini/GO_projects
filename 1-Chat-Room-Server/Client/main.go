@@ -14,8 +14,13 @@ func main() {
 	}
 	defer conn.Close()
 
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Printf("name: ")
+	scanner.Scan()
+	name := scanner.Text()
+
 	go ListenForMsg(conn)
-	sendMsg(conn)
+	sendMsg(conn, name)
 }
 
 func ListenForMsg(conn net.Conn) {
@@ -25,7 +30,9 @@ func ListenForMsg(conn net.Conn) {
 		if err != nil {
 			fmt.Println("errror")
 		}
-		fmt.Println("msg: ", content)
+
+		fmt.Printf("\r\033[K%s=> ", content)
+
 	}
 
 }
