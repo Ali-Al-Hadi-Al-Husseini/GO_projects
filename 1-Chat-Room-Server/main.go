@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"net"
+	"os"
 	"sync"
+	"time"
 )
 
 var (
@@ -46,6 +48,7 @@ func handleConnection(conn net.Conn) {
 		if err != nil {
 			return
 		}
+
 		broadCast(conn, msg)
 	}
 
@@ -61,4 +64,20 @@ func broadCast(sender net.Conn, msg string) {
 		}
 	}
 
+}
+
+func logMsg(msg string) {
+	f, err := os.OpenFile("chat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return
+	}
+
+	defer f.Close()
+
+	// Add a timestamp
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	logLine := fmt.Sprintf("[%s] %s", timestamp, msg)
+
+	// Write the log line
+	f.WriteString(logLine)
 }
