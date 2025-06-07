@@ -37,14 +37,14 @@ func ListenForMsg(conn net.Conn) {
 
 }
 
-func sendMsg(conn net.Conn) {
+func sendMsg(conn net.Conn, name string) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 
 		//scaning for msg to send
 		fmt.Printf("=> ")
 		scanner.Scan()
-		content := scanner.Text() + "\n"
+		content := name + ": " + scanner.Text() + "\n"
 
 		//writing the txt to the response
 		writer := bufio.NewWriter(conn)
