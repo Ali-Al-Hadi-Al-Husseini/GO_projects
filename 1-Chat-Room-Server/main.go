@@ -48,7 +48,7 @@ func handleConnection(conn net.Conn) {
 		if err != nil {
 			return
 		}
-
+		logMsg(msg)
 		broadCast(conn, msg)
 	}
 
