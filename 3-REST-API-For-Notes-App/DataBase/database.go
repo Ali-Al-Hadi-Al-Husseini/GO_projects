@@ -21,6 +21,7 @@ func initDB() {
 		title TEXT,
 		content TEXT,
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+		updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 	);`
 	_, err = db.Exec(createTable)
 	if err != nil {
