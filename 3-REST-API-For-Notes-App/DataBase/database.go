@@ -22,5 +22,8 @@ func initDB() {
 		content TEXT,
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 	);`
-
+	_, err = db.Exec(createTable)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
