@@ -3,9 +3,7 @@ package database
 import (
 	"database/sql"
 	"log"
-	"net/http"
 
-	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -31,37 +29,4 @@ func initDB() {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-
-func createNote(c *gin.Context) {
-	var note struct {
-		Title   string `json:"title"`
-		Content string `json:"content"`
-	}
-
-	err := c.ShouldBindJSON(&note)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
-		return
-	}
-
-	statment, err := db.Prepare("INSERT INTO notes (title, content) VALUES (?,?)")
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	res, err := statment.Exec(note.Title, note.Content)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	id, _ := res.LastInsertId()
-
-	c.JSON(http.StatusCreated, gin.H{
-		"id":      id,
-		"title":   note.Title,
-		"content": note.Content,
-	})
 }
