@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
@@ -37,6 +38,11 @@ func createNote(c *gin.Context) {
 	var note struct {
 		Title   string `json:"title"`
 		Content string `json:"content"`
+	}
+
+	err := c.ShouldBindJSON(&note)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
 	}
 
 }
