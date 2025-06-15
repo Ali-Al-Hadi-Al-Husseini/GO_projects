@@ -42,6 +42,12 @@ func createNote(c *gin.Context) {
 	err := c.ShouldBindJSON(&note)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
+		return
 	}
 
+	statment, err := db.Prepare("INSERT INTO notes (title, content) VALUES (?,?)")
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
 }
