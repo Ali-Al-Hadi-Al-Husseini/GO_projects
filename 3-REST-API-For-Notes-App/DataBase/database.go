@@ -1,8 +1,10 @@
-package database
+package main
 
 import (
 	"database/sql"
 	"log"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var db *sql.DB
@@ -20,7 +22,7 @@ func initDB() {
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		title TEXT,
 		content TEXT,
-		created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 	);`
 	_, err = db.Exec(createTable)
