@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -29,5 +30,12 @@ func initDB() {
 	_, err = db.Exec(createTable)
 	if err != nil {
 		log.Fatal(err)
+	}
+}
+
+func createNote(c *gin.Context) {
+	var note struct {
+		Title   string `json:"title"`
+		Content string `json:"content"`
 	}
 }
