@@ -57,4 +57,11 @@ func createNote(c *gin.Context) {
 		return
 	}
 
+	id, _ := res.LastInsertId()
+
+	c.JSON(http.StatusCreated, gin.H{
+		"id":      id,
+		"title":   note.Title,
+		"content": note.Content,
+	})
 }
