@@ -5,10 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func runRouter() {
+func RunRouter() {
 	router := gin.Default()
-	router.POST("note", func(c *gin.Context) {
-		createNote.CreateNote(c)
-	})
+	router.POST("note", createNote.CreateNote)
+
 	router.Run()
 }
