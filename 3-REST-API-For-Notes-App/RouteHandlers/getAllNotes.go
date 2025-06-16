@@ -15,4 +15,16 @@ func GetAllNotes(c *gin.Context) {
 
 	defer rows.Close()
 
+	var notes []database.Note
+
+	for rows.Next() {
+		var note database.Note
+
+		err := rows.Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.UpdatedAt)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to scan notes"})
+		}
+		notes = append(notes, note)
+	}
+	c.JSON(http.StatusOK, notes)
 }
