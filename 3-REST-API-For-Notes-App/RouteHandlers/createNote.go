@@ -3,7 +3,7 @@ package createNote
 import (
 	"net/http"
 
-	database "github.com/Ali-Al-Hadi-Al-Husseini/GO_projects/tree/main/3-REST-API-For-Notes-App/Database"
+	database "github.com/Ali-Al-Hadi-Al-Husseini/GO_projects/tree/main/3-REST-API-For-Notes-App/DB_Dir"
 	"github.com/gin-gonic/gin"
 )
 
