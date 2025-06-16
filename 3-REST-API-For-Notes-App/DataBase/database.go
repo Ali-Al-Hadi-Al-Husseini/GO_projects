@@ -7,12 +7,12 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-var db *sql.DB
+var DB *sql.DB
 
-func initDB() {
+func InitDB() {
 	var err error
 
-	db, err = sql.Open("sqlite3", "./notes.db")
+	DB, err = sql.Open("sqlite3", "./notes.db")
 
 	if err != nil {
 		log.Fatal(err)
@@ -25,7 +25,7 @@ func initDB() {
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 	);`
-	_, err = db.Exec(createTable)
+	_, err = DB.Exec(createTable)
 	if err != nil {
 		log.Fatal(err)
 	}
