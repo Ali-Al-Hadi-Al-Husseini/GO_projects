@@ -30,3 +30,7 @@ func InitDB() {
 		log.Fatal(err)
 	}
 }
+
+func init() {
+	InitDB()
+}
