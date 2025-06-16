@@ -9,5 +9,6 @@ func RunRouter() {
 	router := gin.Default()
 	router.POST("note", handlers.CreateNote)
 	router.GET("notes", handlers.GetAllNotes)
+	router.GET("note/:id", handlers.GetlNoteByID)
 	router.Run()
 }
