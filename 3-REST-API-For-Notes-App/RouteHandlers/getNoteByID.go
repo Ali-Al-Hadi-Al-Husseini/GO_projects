@@ -28,5 +28,5 @@ func GetlNoteByID(c *gin.Context) {
 		}
 		return
 	}
-
+	c.JSON(http.StatusOK, note)
 }
