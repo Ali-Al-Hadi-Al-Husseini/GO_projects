@@ -9,6 +9,11 @@ import (
 
 var DB *sql.DB
 
+type Note struct {
+	Title   string `json:"title"`
+	Content string `json:"content"`
+}
+
 func InitDB() {
 	var err error
 
