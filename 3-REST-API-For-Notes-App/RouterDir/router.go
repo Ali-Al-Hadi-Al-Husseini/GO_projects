@@ -8,6 +8,6 @@ import (
 func RunRouter() {
 	router := gin.Default()
 	router.POST("note", handlers.CreateNote)
-
+	router.GET("notes", handlers.GetAllNotes)
 	router.Run()
 }
