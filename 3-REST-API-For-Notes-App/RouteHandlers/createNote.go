@@ -1,4 +1,4 @@
-package createNote
+package handlers
 
 import (
 	"net/http"
