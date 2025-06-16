@@ -28,5 +28,9 @@ func UpdateNoteById(c *gin.Context) {
 		}
 		return
 	}
-
+	err = c.BindJSON(&note)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid note update"})
+		return
+	}
 }
