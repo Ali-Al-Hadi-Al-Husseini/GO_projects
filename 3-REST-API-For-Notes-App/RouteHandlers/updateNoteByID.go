@@ -33,4 +33,10 @@ func UpdateNoteById(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid note update"})
 		return
 	}
+	stmt, err := database.DB.Prepare(`
+	UPDATE notes 
+	SET title = ?, content = ?, updated_at = CURRENT_TIMESTAMP 
+	WHERE id = ?
+	`)
+	defer stmt.Close()
 }
