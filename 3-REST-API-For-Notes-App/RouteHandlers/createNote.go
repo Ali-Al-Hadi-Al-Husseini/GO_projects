@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func createNote(c *gin.Context) {
+func CreateNote(c *gin.Context) {
 	var note struct {
 		Title   string `json:"title"`
 		Content string `json:"content"`
