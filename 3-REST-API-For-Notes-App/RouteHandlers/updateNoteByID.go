@@ -16,6 +16,7 @@ func UpdateNoteById(c *gin.Context) {
 	noteId, err := strconv.Atoi(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
+		return
 	}
 	err = database.DB.QueryRow("SELECT id, title, content, created_at, updated_at FROM notes WHERE id = ?", noteId).
 		Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.UpdatedAt)
@@ -27,4 +28,5 @@ func UpdateNoteById(c *gin.Context) {
 		}
 		return
 	}
+
 }

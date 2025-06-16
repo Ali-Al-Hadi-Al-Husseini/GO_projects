@@ -10,5 +10,6 @@ func RunRouter() {
 	router.POST("note", handlers.CreateNote)
 	router.GET("notes", handlers.GetAllNotes)
 	router.GET("note/:id", handlers.GetlNoteByID)
+	router.PUT("note/:id", handlers.UpdateNoteById)
 	router.Run()
 }

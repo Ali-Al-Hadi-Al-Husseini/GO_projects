@@ -23,6 +23,7 @@ func GetAllNotes(c *gin.Context) {
 		err := rows.Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.UpdatedAt)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to scan notes"})
+			return
 		}
 		notes = append(notes, note)
 	}
