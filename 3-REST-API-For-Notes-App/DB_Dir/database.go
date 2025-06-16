@@ -10,8 +10,11 @@ import (
 var DB *sql.DB
 
 type Note struct {
-	Title   string `json:"title"`
-	Content string `json:"content"`
+	ID        int    `json:"id"`
+	Title     string `json:"title"`
+	Content   string `json:"content"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 func InitDB() {
