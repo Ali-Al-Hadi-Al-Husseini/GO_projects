@@ -21,6 +21,7 @@ func CreateNote(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+	defer statment.Close()
 
 	res, err := statment.Exec(note.Title, note.Content)
 	if err != nil {
