@@ -11,5 +11,6 @@ func RunRouter() {
 	router.GET("notes", handlers.GetAllNotes)
 	router.GET("note/:id", handlers.GetlNoteByID)
 	router.PUT("note/:id", handlers.UpdateNoteById)
+	router.DELETE("note/:id", handlers.DeleteNoteById)
 	router.Run()
 }
