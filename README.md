@@ -87,6 +87,20 @@ This repository contains a collection of small Go projects designed to help me l
 
 ---
 
+## 📄 6. Minimal Redis Clone
+
+**Goal**: Build a tiny in-memory key–value store inspired by Redis to learn about networking, concurrency, and commandparsing.
+
+### Key Concepts:
+- TCP servers using Go’s net package
+- Handling multiple clients with goroutines
+- Parsing simple RESP (Redis Serialization Protocol)
+- Implementing core commands (GET, SET, DEL, PING)
+- Safe concurrent access with sync.RWMutex or sync.Map
+
+
+---
+
 ## 🧠 Purpose
 
 Each project in this repository is intended to help me:
